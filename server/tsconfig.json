@@ -1,0 +1,25 @@
+
+{
+  "compilerOptions": {
+      "target": "ES6", 
+      "esModuleInterop": true,
+      "module": "commonjs",
+      "outDir": "dist",                     
+       "removeComments": true,                
+      "strict": true,                          
+      "noImplicitReturns": true,              
+       "baseUrl": "./",                      
+      "experimentalDecorators": true,      
+      "emitDecoratorMetadata": true,    
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "allowUnusedLabels": false,
+      "alwaysStrict": true,
+      "noImplicitAny": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": true,
+      "strictNullChecks": true
+  },
+  "lib": ["es2015"]
+}

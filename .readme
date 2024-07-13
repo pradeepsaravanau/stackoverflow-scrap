@@ -1,0 +1,5 @@
+use /api/v1/auth/signIn -> to sign in to get token
+
+use /api/v1/tags/programmingLanguage - with token will get the questions average answers
+
+use /api/v1/tags/others - with token will get the questions average answers
