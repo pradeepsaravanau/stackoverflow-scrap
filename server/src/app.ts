@@ -21,7 +21,7 @@ const webScraper = new WebScrap();
     console.log("connecting....");
     await DatabaseLoader.init();
     console.log("donee");
-    // const browser = await webScraper.getPopularLanguage();
+    // const browser = await webScraper.getPopularLanguage(); //for scrapping data
   } catch (error: any) {
     console.log("Error " + error.toString());
   }
