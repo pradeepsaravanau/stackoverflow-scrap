@@ -1,7 +1,7 @@
 import { tagModelInstance } from "../models/tag.model";
 
-
-export async function reportTagsData(req: any, res: any){
+class TagController {
+   async  reportTagsData(req: any, res: any){
 
     try {
         const result = await tagModelInstance.generateTagReport(req.params.type);
@@ -12,6 +12,10 @@ export async function reportTagsData(req: any, res: any){
       }
 
 }
+}
+
+export const TagControllerInstance = new TagController();
+
 
 
 

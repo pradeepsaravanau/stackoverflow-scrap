@@ -15,24 +15,13 @@ const app = ExpressLoader.init();
 const port = 3080;
 //  Number(process.env.PORT);
 
-const webScraper = new WebScrap();
 DatabaseLoader.init();
 
-(async () => {
-  try {
-    console.log("connecting....");
-    console.log("donee");
-    // const browser = await webScraper.getPopularLanguage(); //for scrapping data
-  } catch (error: any) {
-    console.log("Error " + error.toString());
-  }
-})();
 
 
 const appVersion = "v1";
 MiddlewareLoader.init(app);
 RoutesLoader.init(app, appVersion);
-app.use('/api/v1/tags', tagRouter);
 
 
 

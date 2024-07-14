@@ -57,7 +57,7 @@ export class WebScrap {
     "c",
   ];
 
-  async getPopularLanguage() {
+  async getPopularLanguages() {
     const page = await this.getPage();
     const tags = await this.extractTags(page);
     console.log({ tags });
