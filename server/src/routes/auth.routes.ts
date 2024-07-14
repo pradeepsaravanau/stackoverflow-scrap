@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { jwtSignIn } from '../controller/auth.controller';
+import {AuthControllerInstance} from '../controller/auth.controller';
 
 const authRouter = Router();
 
-authRouter.get('/signIn', jwtSignIn);
+authRouter.get('/signIn', AuthControllerInstance.jwtSignIn);
 
 export default authRouter;

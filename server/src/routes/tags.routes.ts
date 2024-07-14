@@ -1,11 +1,10 @@
 import { Router } from 'express';
 import { reportTagsData } from '../controller/tags.controller';
-import { verifyToken } from '../controller/auth.controller';
+import { AuthMiddleware } from '../middlewares/auth.middleware';
 
 
 const tagRouter = Router();
 
-tagRouter.use('/', verifyToken);
-tagRouter.get('/:type',  reportTagsData);
+tagRouter.get('/:type', AuthMiddleware.verifyToken, reportTagsData);
 
 export default tagRouter;

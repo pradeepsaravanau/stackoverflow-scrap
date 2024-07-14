@@ -1,13 +1,14 @@
+import dotenv from "dotenv";
 import { DatabaseLoader } from "./loaders/database.loader";
 import { ExpressLoader } from "./loaders/express.loader";
 import { WebScrap } from "./service/webScrap.service";
 import tagRouter from  "./routes/tags.routes";
 import authRouter from  "./routes/auth.routes";
+import { MiddlewareLoader } from "./loaders/middleware.loader";
+import { RoutesLoader } from "./loaders/routes.loader";
 
 
-// Create an Express application
 
-import dotenv from "dotenv";
 dotenv.config();
 const app = ExpressLoader.init();
 // Set the port number for the server
@@ -15,11 +16,11 @@ const port = 3080;
 //  Number(process.env.PORT);
 
 const webScraper = new WebScrap();
+DatabaseLoader.init();
 
 (async () => {
   try {
     console.log("connecting....");
-    await DatabaseLoader.init();
     console.log("donee");
     // const browser = await webScraper.getPopularLanguage(); //for scrapping data
   } catch (error: any) {
@@ -28,17 +29,14 @@ const webScraper = new WebScrap();
 })();
 
 
-
+const appVersion = "v1";
+MiddlewareLoader.init(app);
+RoutesLoader.init(app, appVersion);
 app.use('/api/v1/tags', tagRouter);
-app.use('/api/v1/auth', authRouter);
 
 
-// app.get('/api/tags', async (req, res) => {
-//   const tags = await Tag.find();
-//   res.json(tags);
-// });
 
-// Start the server and listen on the specified port
+
 app.listen(port, () =>
   console.log(`
     ==================================
