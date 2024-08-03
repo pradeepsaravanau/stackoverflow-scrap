@@ -1,6 +1,7 @@
+
 import { Router } from 'express';
 import { AuthMiddleware } from '../middlewares/auth.middleware';
-import { WebScrapControllerInstance } from 'src/controller/webScrap.controller';
+import { WebScrapControllerInstance } from '../controller/webScrap.controller';
 
 
 const webScrapRouter = Router();

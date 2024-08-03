@@ -9,11 +9,11 @@ interface IDbInit {
 class DBService {
   private mongooseInstance: Mongoose | null = null;
 
-  async init({ user, password }: IDbInit) {
-    // const uri = `mongodb+srv://${user}:${password}@cluster0.aydyw13.mongodb.net/${database}?retryWrites=true&w=majority`;
+  async init({ user, password, database }: IDbInit) {
+    const uri = `mongodb+srv://${user}:${password}@cluster0.aydyw13.mongodb.net/${database}?retryWrites=true&w=majority`;
 
     console.log(user, password);
-    const uri = "mongodb://localhost:27017/stack";
+    // const uri = "mongodb://localhost:27017/stack";
     const options: ConnectOptions = {
       minPoolSize: 10,
       serverSelectionTimeoutMS: 5000, // Timeout after 5s if server selection takes too long

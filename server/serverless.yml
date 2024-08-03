@@ -1,0 +1,48 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: ups008
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: library-serverless
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: stack-overflow-data
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  # region: ap-south-1
+  stage: ${opt:stage, 'dev'}
+  # apiName: stack-overflow-data-api
+  endpointType: regional
+  iam:
+    role: arn:aws:iam::730335288608:role/service-role/DemoHandler-role-t8sd64wr
+
+functions:
+   app:
+    handler: dist/app.handler 
+    events:
+      - http:
+          path: api/v1/auth/signIn
+          method: get
+          cors: true
+      - http:
+          path: api/v1/tags/programmingLanguage
+          method: get
+          cors: true
+
+plugins:
+  - serverless-domain-manager
+  - serverless-offline
+  - serverless-esbuild
+
+custom:
+  customDomains:
+    - rest:
+      domainName:  ${opt:stage, 'dev'}backend.ups8.life
+      stage: ${opt:stage, 'dev'}
+      certificateName: ${opt:stage, 'dev'}backend.ups8.life
+      createRoute53Record: false  
+      createRoute53IPv6Record: false
+      endpointType: REGIONAL
+      securityPolicy: tls_1_2
+      autoDomain: false
+
+  

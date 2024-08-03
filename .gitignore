@@ -2,4 +2,6 @@
 
 /server/dist
 /server/.env
+.zip
+.serverless
 
